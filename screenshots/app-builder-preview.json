@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Gomarch",
+      "hasCanvas": false,
+      "bodyTextLen": 104,
+      "bodyTextHash": "847fdaa857f6b55f2abb9e4fecf718185fa43404552edb3e18aa3119a9036fc0",
+      "bodyTextPrefix": "GOMARCH GOMARK Gomarch Private recovery vault. Enter the phrase ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Gomarch",
+      "hasCanvas": false,
+      "bodyTextLen": 104,
+      "bodyTextHash": "847fdaa857f6b55f2abb9e4fecf718185fa43404552edb3e18aa3119a9036fc0",
+      "bodyTextPrefix": "GOMARCH GOMARK Gomarch Private recovery vault. Enter the phrase ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

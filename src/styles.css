@@ -1,0 +1,296 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #07080a;
+  --color-bg-elevated: #111316;
+  --color-fg: #f3f5f7;
+  --color-muted: #9aa3ad;
+  --color-subtle: #6e7780;
+  --color-accent: #d5dde4;
+  --color-accent-fg: #0b0c0e;
+  --color-danger: #c45c5c;
+  --color-ok: #7fbf9e;
+  --color-ring: #cfd6dc;
+  --color-glass: #ffffff;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.liquid-stage {
+  position: relative;
+  isolation: isolate;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100dvh;
+  background: var(--color-bg);
+}
+
+.liquid-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.liquid-core {
+  position: absolute;
+  inset: -20%;
+  z-index: 0;
+  filter: url("#gomarch-goo");
+  transform: translateZ(0);
+}
+
+.liquid-blob {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+.liquid-blob-a {
+  width: min(58vw, 520px);
+  height: min(58vw, 520px);
+  left: 8%;
+  top: 6%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    color-mix(in oklab, var(--color-accent) 55%, white) 0%,
+    color-mix(in oklab, var(--color-accent) 18%, transparent) 62%,
+    transparent 74%
+  );
+  animation: blob-a 18s var(--ease-smooth) infinite;
+}
+
+.liquid-blob-b {
+  width: min(48vw, 440px);
+  height: min(48vw, 440px);
+  right: 4%;
+  top: 18%;
+  background: radial-gradient(
+    circle at 40% 30%,
+    color-mix(in oklab, var(--color-muted) 50%, white) 0%,
+    color-mix(in oklab, var(--color-muted) 14%, transparent) 64%,
+    transparent 76%
+  );
+  animation: blob-b 22s var(--ease-smooth) infinite;
+}
+
+.liquid-blob-c {
+  width: min(62vw, 560px);
+  height: min(42vw, 380px);
+  left: 22%;
+  bottom: -8%;
+  background: radial-gradient(
+    circle at 50% 40%,
+    color-mix(in oklab, var(--color-fg) 28%, transparent) 0%,
+    color-mix(in oklab, var(--color-subtle) 16%, transparent) 58%,
+    transparent 76%
+  );
+  animation: blob-c 26s var(--ease-smooth) infinite;
+}
+
+.liquid-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(1200px 700px at 50% -10%, transparent 0%, var(--color-bg) 72%),
+    linear-gradient(180deg, color-mix(in oklab, var(--color-bg) 20%, transparent), var(--color-bg));
+}
+
+.glass {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-glass) 18%, transparent),
+    color-mix(in oklab, var(--color-glass) 7%, transparent)
+  );
+  backdrop-filter: blur(36px) saturate(1.45);
+  -webkit-backdrop-filter: blur(36px) saturate(1.45);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--color-glass) 34%, transparent),
+    inset 0 -1px 0 color-mix(in oklab, var(--color-glass) 6%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--color-glass) 12%, transparent),
+    0 28px 80px color-mix(in oklab, var(--color-bg) 55%, transparent);
+  overflow: hidden;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 70%;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    color-mix(in oklab, var(--color-glass) 22%, transparent) 46%,
+    transparent 62%
+  );
+  animation: glass-sheen 9s var(--ease-smooth) infinite;
+}
+
+.glass-compact {
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+}
+
+.glass-input {
+  background: color-mix(in oklab, var(--color-glass) 8%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--color-glass) 18%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--color-glass) 12%, transparent);
+}
+
+.glass-input:focus-within {
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, var(--color-glass) 24%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--color-accent) 55%, transparent),
+    0 0 0 4px color-mix(in oklab, var(--color-accent) 16%, transparent);
+}
+
+@keyframes blob-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(12%, 10%, 0) scale(1.12);
+  }
+}
+
+@keyframes blob-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-14%, 8%, 0) scale(1.08);
+  }
+}
+
+@keyframes blob-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(8%, -12%, 0) scale(1.16);
+  }
+}
+
+@keyframes glass-sheen {
+  0%,
+  100% {
+    transform: translate3d(-8%, 0, 0) rotate(8deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(10%, 6%, 0) rotate(12deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes shake-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+.rise {
+  animation: rise-in 500ms var(--ease-smooth) both;
+}
+
+.rise-2 {
+  animation: rise-in 500ms var(--ease-smooth) 80ms both;
+}
+
+.rise-3 {
+  animation: rise-in 500ms var(--ease-smooth) 160ms both;
+}
+
+.rise-4 {
+  animation: rise-in 500ms var(--ease-smooth) 240ms both;
+}
+
+.shake {
+  animation: shake-x 280ms ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-blob,
+  .glass::before,
+  .rise,
+  .rise-2,
+  .rise-3,
+  .rise-4,
+  .shake {
+    animation: none !important;
+  }
+
+  .liquid-blob {
+    transform: none !important;
+  }
+}
